@@ -53,12 +53,25 @@ end
 
 post '/' do
 	birthdate = params[:birthdate].gsub("-", "")
-	birth_path_num = get_birth_path_num(params[:birthdate])
-	redirect "/message/#{birth_path_num}"
+	if valid_birthdate(birthdate)
+		birth_path_num = get_birth_path_num(params[:birthdate])
+		redirect "/message/#{birth_path_num}"
+	else
+		@error = "Sorry, your input wasn't valid. Please use mmddyyyy format for your birthdate."
+		erb :form
+	end
 end
 
 get '/message/:birth_path_num' do
 	birth_path_num = params[:birth_path_num].to_i
 	@message = get_message(birth_path_num)
 	erb :index
+end
+
+def valid_birthdate(input)
+	if (input.length == 8 && !input.match(/^[0-9]+[0-9]$/).nil?)
+		true
+	else
+		false
+	end
 end

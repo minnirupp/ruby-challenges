@@ -5,7 +5,10 @@
 	<form class="col-md-3" action="/" method="post">
 		<div class="form-group">
 			<label for="birthdate">Enter your birthdate:</label>
-			<input class="form-control" type="date" name="birthdate">
+			<% if !@error.nil? %>
+				<p class="bg-danger"><%= @error %></p>
+			<% end %>
+			<input class="form-control" type="text" name="birthdate">
 		</div>
 		<input class="btn btn-primary" type="submit">
 	</form>
