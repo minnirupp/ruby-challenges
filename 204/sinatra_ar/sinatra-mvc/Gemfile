@@ -5,6 +5,8 @@ gem 'pg'
 
 gem 'rspec'
 
+gem 'faker'
+
 gem 'sinatra'
 gem 'sinatra-activerecord'
 gem 'rake'
