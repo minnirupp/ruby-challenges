@@ -1,2 +1,0 @@
-# ruby-challenges
-Ruby Challenges
