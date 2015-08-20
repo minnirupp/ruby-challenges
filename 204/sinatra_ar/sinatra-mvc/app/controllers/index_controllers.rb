@@ -14,8 +14,9 @@ end
 
 post '/' do
 	birthdate = params[:birthdate].gsub("-", "")
+
 	if Person.valid_birthdate(birthdate)
-		birth_path_num = Person.get_birth_path_num(params[:birthdate])
+		birth_path_num = Person.get_birth_path_num(birthdate)
 		redirect "/message/#{birth_path_num}"
 	else
 		@error = "Oops! You should enter a valid birthdate in the form of mmddyyyy. Try again!"
